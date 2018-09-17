@@ -88,8 +88,6 @@
       <HintPath>..\packages\System.Diagnostics.DiagnosticSource.4.5.0\lib\net46\System.Diagnostics.DiagnosticSource.dll</HintPath>
     </Reference>
     <Reference Include="System.Drawing" />
-    <Reference Include="System.Runtime.Serialization" />
-    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -152,40 +150,9 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\ApplicationController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\UATPackageController.cs" />
-    <Compile Include="DAL\ApplicationRepository.cs" />
-    <Compile Include="DAL\ConfigurationRepository.cs" />
-    <Compile Include="DAL\GenericRepository.cs" />
-    <Compile Include="DAL\UAT_MigrationRepository.cs" />
-    <Compile Include="DAL\UnitOfWork.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
-    </Compile>
-    <Compile Include="Model\Application.cs">
-      <DependentUpon>UAT_CREATOR_Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\Configuration.cs">
-      <DependentUpon>UAT_CREATOR_Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\UAT_CREATOR_Context.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>UAT_CREATOR_Context.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\UAT_CREATOR_Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>UAT_CREATOR_Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\UAT_CREATOR_Context.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>UAT_CREATOR_Context.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Model\UAT_Migration.cs">
-      <DependentUpon>UAT_CREATOR_Context.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -266,16 +233,6 @@
     <Content Include="Content\bootstrap\mixins\_border-radius.scss" />
     <Content Include="Content\bootstrap\mixins\_background-variant.scss" />
     <Content Include="Content\bootstrap\mixins\_alerts.scss" />
-    <Content Include="Model\UAT_CREATOR_Context.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>UAT_CREATOR_Context.edmx</DependentUpon>
-      <LastGenOutput>UAT_CREATOR_Context.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Model\UAT_CREATOR_Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>UAT_CREATOR_Context.edmx</DependentUpon>
-      <LastGenOutput>UAT_CREATOR_Context.cs</LastGenOutput>
-    </Content>
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\esm\popper-utils.js" />
@@ -290,13 +247,6 @@
     <Content Include="Scripts\bootstrap.js.map" />
     <Content Include="Scripts\bootstrap.bundle.min.js.map" />
     <Content Include="Scripts\bootstrap.bundle.js.map" />
-    <EntityDeploy Include="Model\UAT_CREATOR_Context.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>UAT_CREATOR_Context.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Model\UAT_CREATOR_Context.edmx.diagram">
-      <DependentUpon>UAT_CREATOR_Context.edmx</DependentUpon>
-    </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -356,8 +306,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Application\" />
-    <Folder Include="Views\UATPackage\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -369,7 +317,6 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

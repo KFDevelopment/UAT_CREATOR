@@ -1,0 +1,164 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="UAT_CREATORModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Application">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Code" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Label" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ReleaseFolderName" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Configuration">
+          <Key>
+            <PropertyRef Name="Code" />
+          </Key>
+          <Property Name="Code" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Value" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UAT_Migration">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DateUATPackage" Type="datetime" Nullable="false" />
+          <Property Name="ApplicationId" Type="int" Nullable="false" />
+          <Property Name="Error" Type="nvarchar(max)" />
+        </EntityType>
+        <Association Name="FK_UAT_Migration_Application">
+          <End Role="Application" Type="Self.Application" Multiplicity="1" />
+          <End Role="UAT_Migration" Type="Self.UAT_Migration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Application">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UAT_Migration">
+              <PropertyRef Name="ApplicationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="UAT_CREATORModelStoreContainer">
+          <EntitySet Name="Application" EntityType="Self.Application" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Configuration" EntityType="Self.Configuration" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UAT_Migration" EntityType="Self.UAT_Migration" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_UAT_Migration_Application" Association="Self.FK_UAT_Migration_Application">
+            <End Role="Application" EntitySet="Application" />
+            <End Role="UAT_Migration" EntitySet="UAT_Migration" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="UAT_CREATORModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Application">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Label" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ReleaseFolderName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="UAT_Migration" Relationship="Self.FK_UAT_Migration_Application" FromRole="Application" ToRole="UAT_Migration" />
+        </EntityType>
+        <EntityType Name="Configuration">
+          <Key>
+            <PropertyRef Name="Code" />
+          </Key>
+          <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Value" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UAT_Migration">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DateUATPackage" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ApplicationId" Type="Int32" Nullable="false" />
+          <Property Name="Error" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Application" Relationship="Self.FK_UAT_Migration_Application" FromRole="UAT_Migration" ToRole="Application" />
+        </EntityType>
+        <Association Name="FK_UAT_Migration_Application">
+          <End Role="Application" Type="Self.Application" Multiplicity="1" />
+          <End Role="UAT_Migration" Type="Self.UAT_Migration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Application">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UAT_Migration">
+              <PropertyRef Name="ApplicationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="UAT_CREATOREntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Application" EntityType="Self.Application" />
+          <EntitySet Name="Configuration" EntityType="Self.Configuration" />
+          <EntitySet Name="UAT_Migration" EntityType="Self.UAT_Migration" />
+          <AssociationSet Name="FK_UAT_Migration_Application" Association="Self.FK_UAT_Migration_Application">
+            <End Role="Application" EntitySet="Application" />
+            <End Role="UAT_Migration" EntitySet="UAT_Migration" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="UAT_CREATORModelStoreContainer" CdmEntityContainer="UAT_CREATOREntities">
+          <EntitySetMapping Name="Application">
+            <EntityTypeMapping TypeName="UAT_CREATORModel.Application">
+              <MappingFragment StoreEntitySet="Application">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Label" ColumnName="Label" />
+                <ScalarProperty Name="ReleaseFolderName" ColumnName="ReleaseFolderName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Configuration">
+            <EntityTypeMapping TypeName="UAT_CREATORModel.Configuration">
+              <MappingFragment StoreEntitySet="Configuration">
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UAT_Migration">
+            <EntityTypeMapping TypeName="UAT_CREATORModel.UAT_Migration">
+              <MappingFragment StoreEntitySet="UAT_Migration">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="DateUATPackage" ColumnName="DateUATPackage" />
+                <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
+                <ScalarProperty Name="Error" ColumnName="Error" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

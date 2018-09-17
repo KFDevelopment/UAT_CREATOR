@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2026
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UAT_CREATOR", "UAT_CREATOR\UAT_CREATOR.csproj", "{E1001B97-258F-4FA5-B370-8E9E58D39525}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E1001B97-258F-4FA5-B370-8E9E58D39525}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E1001B97-258F-4FA5-B370-8E9E58D39525}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E1001B97-258F-4FA5-B370-8E9E58D39525}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E1001B97-258F-4FA5-B370-8E9E58D39525}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B469D942-3A60-4A22-939E-9F828E2D6A0A}
+	EndGlobalSection
+EndGlobal
