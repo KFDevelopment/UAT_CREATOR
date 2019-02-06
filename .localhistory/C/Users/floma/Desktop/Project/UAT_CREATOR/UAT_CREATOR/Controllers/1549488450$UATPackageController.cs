@@ -105,15 +105,5 @@ namespace UAT_CREATOR.Controllers
 
             return RedirectToAction("Index","Home");
         }
-
-        public void GenerateMail(string DestinationFolder,string applicationName) {
-            Configuration configuration = context.ConfigurationRepository.FirstOrDefault(d => d.Code == "IT_APPLICATION_EMAIL");
-
-            string message = "Hello; \n" +
-                "Could you put this package in " + applicationName + " on UAT \n" + DestinationFolder + "\n" +
-                "Thank you.";
-                
-
-        }
     }
 }
