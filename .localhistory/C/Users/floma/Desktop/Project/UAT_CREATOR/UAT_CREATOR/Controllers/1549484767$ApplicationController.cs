@@ -21,12 +21,12 @@ namespace UAT_CREATOR.Controllers
         }
 
 
-        public ActionResult _Edit(int? applicationId) {
+        public ActionResult EditApplication(int? applicationId) {
             Application application = new Application();
             if (applicationId.HasValue) application = unitOfWork.ApplicationRepository.Find(applicationId);
 
 
-            return PartialView(application);
+            return View(application);
         }
 
         [HttpPost]

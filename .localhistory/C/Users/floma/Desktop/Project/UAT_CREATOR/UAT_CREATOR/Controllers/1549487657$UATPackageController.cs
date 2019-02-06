@@ -100,8 +100,7 @@ namespace UAT_CREATOR.Controllers
                 migration.Error += (" ///// " + e.Message);
             }
 
-            context.UAT_MigrationRepository.Add(migration);
-            context.SaveChanges();
+
 
             return RedirectToAction("Index","Home");
         }

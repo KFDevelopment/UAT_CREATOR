@@ -1,0 +1,80 @@
+@model List<Application>
+
+
+<div class="card">
+  <div class="card-header">
+      Applications
+  </div>
+  <div class="card-body">
+       <div class="col-md-12">
+          <<div class="table-responsive">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>
+                    Code
+                  </th>
+                  <th>
+                    Name
+                  </th>
+                  <th>
+                    Release Folder
+                  </th>
+                  <th>
+
+                  </th>
+                </tr>
+              </thead>
+
+              <tbody>
+                @foreach(var item in Model){
+                   <tr>
+                      <td>
+                        @item.Code
+                      </td>
+                      <td>
+                          @item.Label
+
+                      </td>
+                      <td>
+                        @item.ReleaseFolderName
+                      </td>
+                      <td>
+                        <button type="button" class="btn btn-primary" onclick="edit(@item.Id)">
+                        edit
+                        </button>
+
+                      </td>
+
+
+                   </tr>
+                }
+              </tbody>
+            </table>
+          </div>
+
+       </div>
+
+
+  </div>
+</div>
+
+<div class="modal" tabindex="-1" role="dialog" id="modaledit">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content" id="editcontent">
+
+    </div>
+  </div>
+</div>
+
+<script>
+function edit(id){
+    $.ajax({
+        url: "@Url.Action("applicationId","Application")", data: { applicationId:id}, success: function(result){
+    $("#editcontent").html(result);
+    $("#modaledit").modal("show");
+  }});
+}
+
+
+</script>

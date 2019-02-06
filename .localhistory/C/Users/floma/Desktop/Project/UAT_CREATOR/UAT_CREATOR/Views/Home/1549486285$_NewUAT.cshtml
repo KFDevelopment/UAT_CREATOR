@@ -1,0 +1,44 @@
+﻿
+@model List<Application>
+<div class="card">
+    <div class="card-header">
+        Application
+    </div>
+    <div class="card-body">
+        <div class="col-md-12">
+            <table class="table table-sm">
+                <thead>
+                    <tr>
+                        <th>
+                            Code
+                        </th>
+                        <th>
+                            Name
+                        </th>
+                        <th>
+                            Release Folder
+                        </th>
+                        <th>
+                            </th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model) {
+                        <tr>
+                            <td>
+                                @item.Code
+                            </td>
+                            <td>
+                                <button type="button" class="btn btn-primary" onclick="edit(@item.Id)">
+                        edit
+                        </button>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+

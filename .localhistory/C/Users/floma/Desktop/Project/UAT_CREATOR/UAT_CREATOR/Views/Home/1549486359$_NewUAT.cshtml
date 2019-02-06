@@ -1,0 +1,69 @@
+﻿
+@model List<Application>
+<div class="card">
+    <div class="card-header">
+        Application
+    </div>
+    <div class="card-body">
+        <div class="col-md-12">
+            <table class="table table-sm">
+                <thead>
+                    <tr>
+                        <th>
+                            Code
+                        </th>
+                        <th>
+                            Name
+                        </th>
+                        <th>
+                            Release Folder
+                        </th>
+                        <th>
+                        </th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model) {
+                        <tr>
+                            <td>
+                                @item.Code
+                            </td>
+                            <td>
+                                @item.Label
+                            </td>
+                            <td>
+                                @item.ReleaseFolderName
+                            </td>
+                            <td>
+                                <button type="button" class="btn btn-primary" onclick="newMigration(@item.Id)">
+                                    Publish
+                                </button>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div class="modal" tabindex="-1" role="dialog" id="modalpublish">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content" id="publishcontent">
+
+        </div>
+    </div>
+</div>
+
+<script>
+function edit(id){
+    $.ajax({
+        url: "@Url.Action("_Publish","Application")", data: { applicationId:id}, success: function(result){
+            $("#publishcontent").html(result);
+            $("#modalpublish").modal("show");
+  }});
+}
+
+
+</script>
+

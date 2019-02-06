@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="UAT_CREATORModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="UAT_CREATORModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Application">
           <Key>
             <PropertyRef Name="Id" />
@@ -12,8 +12,7 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Code" Type="nvarchar(max)" Nullable="false" />
           <Property Name="Label" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="SourceFolderName" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="DestinationFolderName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ReleaseFolderName" Type="nvarchar(max)" Nullable="false" />
         </EntityType>
         <EntityType Name="Configuration">
           <Key>
@@ -52,7 +51,8 @@
             <End Role="UAT_Migration" EntitySet="UAT_Migration" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="UAT_CREATORModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -63,9 +63,8 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Code" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Label" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ReleaseFolderName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="UAT_Migration" Relationship="Self.FK_UAT_Migration_Application" FromRole="Application" ToRole="UAT_Migration" />
-          <Property Name="SourceFolderName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="DestinationFolderName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Configuration">
           <Key>
@@ -114,11 +113,10 @@
           <EntitySetMapping Name="Application">
             <EntityTypeMapping TypeName="UAT_CREATORModel.Application">
               <MappingFragment StoreEntitySet="Application">
-                <ScalarProperty Name="DestinationFolderName" ColumnName="DestinationFolderName" />
-                <ScalarProperty Name="SourceFolderName" ColumnName="SourceFolderName" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Code" ColumnName="Code" />
                 <ScalarProperty Name="Label" ColumnName="Label" />
+                <ScalarProperty Name="ReleaseFolderName" ColumnName="ReleaseFolderName" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

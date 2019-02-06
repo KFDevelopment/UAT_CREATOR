@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using UAT_CREATOR.DAL;
 
 namespace UAT_CREATOR.Controllers {
     public class HomeController : Controller {
@@ -15,13 +14,8 @@ namespace UAT_CREATOR.Controllers {
         }
 
         public ActionResult _NewUAT() {
-            return PartialView(context.ApplicationRepository.ToList().OrderBy(d => d.Label).ToList());
+            return PartialView()
         }
-        public ActionResult _AllUAT() {
-            return PartialView(context.UAT_MigrationRepository.ToList().OrderByDescending(d => d.DateUATPackage).ToList());
-
-        }
-
-
+       
     }
 }

@@ -19,11 +19,6 @@ namespace UAT_CREATOR.Controllers
            
             return View();
         }
-        public ActionResult _Publish(int applicationId)
-        {
-           
-            return PartialView(context.ApplicationRepository.Find(applicationId));
-        }
 
         public static string Copy(string sourceDirectory, string targetDirectory) {
             DirectoryInfo diSource = new DirectoryInfo(sourceDirectory);
@@ -100,8 +95,7 @@ namespace UAT_CREATOR.Controllers
                 migration.Error += (" ///// " + e.Message);
             }
 
-            context.UAT_MigrationRepository.Add(migration);
-            context.SaveChanges();
+
 
             return RedirectToAction("Index","Home");
         }

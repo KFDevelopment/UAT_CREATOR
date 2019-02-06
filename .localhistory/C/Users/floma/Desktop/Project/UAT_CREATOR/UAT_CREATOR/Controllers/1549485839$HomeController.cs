@@ -17,11 +17,6 @@ namespace UAT_CREATOR.Controllers {
         public ActionResult _NewUAT() {
             return PartialView(context.ApplicationRepository.ToList().OrderBy(d => d.Label).ToList());
         }
-        public ActionResult _AllUAT() {
-            return PartialView(context.UAT_MigrationRepository.ToList().OrderByDescending(d => d.DateUATPackage).ToList());
-
-        }
-
-
+       
     }
 }

@@ -23,7 +23,8 @@ namespace UAT_CREATOR.Model
         public int Id { get; set; }
         public string Code { get; set; }
         public string Label { get; set; }
-        public string ReleaseFolderName { get; set; }
+        public string SourceFolderName { get; set; }
+        public string DestinationFolderName { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UAT_Migration> UAT_Migration { get; set; }
